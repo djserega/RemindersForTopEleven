@@ -36,55 +36,7 @@ namespace RemindersForTopEleven
         {
             _listOfMatches.Clear();
 
-            string errorText = new Reader().ReadData(_listOfMatches);
-
-
-            #region game friends
-            //int countRow = arrText_times.Count();
-
-            //int countRowMatch;
-            //if (countRow % 2 == 1)
-            //    countRowMatch = (countRow - 1) / 2;
-            //else
-            //    countRowMatch = countRow / 2;
-
-            //List<string> listOfMatches = new List<string>();
-
-            //int idMatch = 0;
-
-            //for (int i = 0; i < arrText_times.Length; i++)
-            //{
-            //    string item = arrText_times[i];
-
-            //    if (!string.IsNullOrWhiteSpace(item))
-            //    {
-            //        if (i < countRowMatch)
-            //            listOfMatches.Add(item);
-            //        else
-            //            listOfMatches[idMatch] += " - " + item;
-
-            //        idMatch++;
-            //    }
-
-            //    if (i == countRowMatch)
-            //        idMatch = 0;
-            //} 
-            #endregion
-
-            #region teams
-            //string fileNameTeamsHome = "02 - teams home";
-            //string[] text_teams_home = new string[3];
-            //text_teams_home[0] = new OcrTesseract().GetTextImage(fileNameTeamsHome);
-            //text_teams_home[1] = new OcrTesseract().GetTextImage(fileNameTeamsHome, "rus");
-            //text_teams_home[2] = new OcrTesseract().GetTextImage(fileNameTeamsHome, "ukr");
-
-            //string fileNameTeamsAway = "02 - teams away";
-            //string[] text_teams_away = new string[3];
-            //text_teams_away[0] = new OcrTesseract().GetTextImage(fileNameTeamsAway);
-            //text_teams_away[1] = new OcrTesseract().GetTextImage(fileNameTeamsAway, "rus");
-            //text_teams_away[2] = new OcrTesseract().GetTextImage(fileNameTeamsAway, "ukr"); 
-            #endregion
-
+            new Reader().ReadData(_listOfMatches);
         }
     }
 }
