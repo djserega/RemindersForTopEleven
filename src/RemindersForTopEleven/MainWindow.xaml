@@ -12,11 +12,15 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
-        <Button Grid.Row="0" Content="Прочитать файлы" Click="ButtonReadFile_Click"/>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Content="Прочитать файлы" Click="ButtonReadFile_Click"/>
+            <Separator Width="5"/>
+            <Button Content="Отравить сообщение" Click="ButtonSendMessage_Click"/>
+        </StackPanel>
 
         <Grid Grid.Row="1">
-            <DataGrid ItemsSource="{Binding ElementName=WindowsMainPage, Path=DataContext.ListOfMatches}" AutoGenerateColumns="False">
+            <DataGrid x:Name="DataGridListMatches" ItemsSource="{Binding ElementName=WindowsMainPage, Path=DataContext.ListOfMatches}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
                     <DataGridTextColumn Header="Время" Binding="{Binding Time}"/>

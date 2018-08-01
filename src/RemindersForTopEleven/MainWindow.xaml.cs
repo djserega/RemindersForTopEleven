@@ -38,5 +38,15 @@ namespace RemindersForTopEleven
 
             new Reader().ReadData(_listOfMatches);
         }
+
+        private void ButtonSendMessage_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataGridListMatches.SelectedItem is Models.Match match)
+            {
+                string message = $"Скоро гра у команди {match.Team}. {match.Date} о {match.Time}";
+
+                new TelegramApi().SendMessageAsync(message);
+            }
+        }
     }
 }
