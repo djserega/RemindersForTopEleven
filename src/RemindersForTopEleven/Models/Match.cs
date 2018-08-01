@@ -12,6 +12,7 @@ namespace RemindersForTopEleven.Models
         private string _time;
         private string _team;
         private DateTime _dateTime;
+        private bool _currentDay;
 
         public Match(string date)
         {
@@ -27,7 +28,8 @@ namespace RemindersForTopEleven.Models
         public string Date { get => _date; set { _date = value; NotifyPropertyChanged(); } }
         public string Time { get => _time; set { _time = value; NotifyPropertyChanged(); } }
         public string Team { get => _team; set { _team = value; NotifyPropertyChanged(); } }
-        public DateTime DateTime { get => _dateTime; set { _dateTime = value; NotifyPropertyChanged(); } }
+        public DateTime DateTime { get => _dateTime; set { _dateTime = value; NotifyPropertyChanged(); SetCurrentDay(); } }
+        public bool CurrentDay { get => _currentDay; set { _currentDay = value; NotifyPropertyChanged(); } }
 
         internal void SetDateTime()
         {
@@ -42,6 +44,9 @@ namespace RemindersForTopEleven.Models
 
         private int GetInt(string text)
             => int.Parse(text);
+
+        private void SetCurrentDay()
+            => _currentDay = DateTime.Now.Date == _dateTime.Date;
 
     }
 }
