@@ -74,7 +74,10 @@ namespace RemindersForTopEleven
 
                 foreach (string item in arrTextTimes)
                     if (!string.IsNullOrWhiteSpace(item))
-                        listOfMatches[idTime++].Time = item;
+                    {
+                        listOfMatches[idTime].Time = item;
+                        listOfMatches[idTime++].SetDateTime();
+                    }
             }
             catch (Exception)
             {

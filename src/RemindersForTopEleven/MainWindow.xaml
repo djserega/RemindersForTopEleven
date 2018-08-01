@@ -15,15 +15,16 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button Content="Прочитать файлы" Click="ButtonReadFile_Click"/>
-            <Separator Width="5"/>
+            <Separator Width="5" Background="{x:Null}"/>
             <Button Content="Отравить сообщение" Click="ButtonSendMessage_Click"/>
         </StackPanel>
 
         <Grid Grid.Row="1">
             <DataGrid x:Name="DataGridListMatches" ItemsSource="{Binding ElementName=WindowsMainPage, Path=DataContext.ListOfMatches}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
-                    <DataGridTextColumn Header="Время" Binding="{Binding Time}"/>
+                    <DataGridTextColumn Header="Дата/время" Binding="{Binding DateTime, StringFormat=\{0:dd.MM.yy HH:mm\}}" />
+                    <!--<DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
+                    <DataGridTextColumn Header="Время" Binding="{Binding Time}"/>-->
                     <DataGridTextColumn Header="Команда" Binding="{Binding Team}"/>
                 </DataGrid.Columns>
             </DataGrid>

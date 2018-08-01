@@ -43,7 +43,7 @@ namespace RemindersForTopEleven
         {
             if (DataGridListMatches.SelectedItem is Models.Match match)
             {
-                string message = $"Скоро гра у команди {match.Team}. {match.Date} о {match.Time}";
+                string message = $"Скоро гра у команди {match.Team}. Початок о {match.DateTime.ToString("dd.MM HH:mm")}";
 
                 new TelegramApi().SendMessageAsync(message);
             }
