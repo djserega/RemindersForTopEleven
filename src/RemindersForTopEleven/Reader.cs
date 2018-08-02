@@ -11,34 +11,43 @@ namespace RemindersForTopEleven
     internal class Reader
     {
         private OcrTesseract ocr;
-        internal string ReadData(ObservableCollection<Models.Match> listOfMatches)
+        internal List<Models.Match> ReadData()
         {
-            DirectoryInfo directoryInfo = new DirectoryInfo($@"{Directory.GetCurrentDirectory()}\data");
+            List<Models.Match> listOfMatches = new List<Models.Match>();
+
+            DirectoryInfo workDirectory = new DirectoryInfo($@"{Directory.GetCurrentDirectory()}\data");
 
             ocr = new OcrTesseract
             {
-                WorkDirectory = directoryInfo.FullName
+                WorkDirectory = workDirectory.FullName
             };
 
-            DirectoryInfo[] directoriesTeams = directoryInfo.GetDirectories();
+            DirectoryInfo directoryInfoTeam = new DirectoryInfo($@"{workDirectory.FullName}\teams");
+
+            DirectoryInfo[] directoriesTeams = directoryInfoTeam.GetDirectories();
             foreach (DirectoryInfo directoryTeam in directoriesTeams)
             {
                 string team = directoryTeam.Name;
 
+                List<Models.Match> listOfMatchesTeam = new List<Models.Match>();
+
                 FileInfo[] filesDate = directoryTeam.GetFiles("date-??.png", SearchOption.TopDirectoryOnly);
                 foreach (FileInfo item in filesDate)
-                    ReadMatchDate(listOfMatches, item.FullName, team);
+                    ReadMatchDate(listOfMatchesTeam, item.FullName, team);
 
                 int idTime = 0;
                 FileInfo[] filesTime = directoryTeam.GetFiles("time-??.png", SearchOption.TopDirectoryOnly);
                 foreach (FileInfo item in filesTime)
-                    ReadMatchTime(listOfMatches, item.FullName, ref idTime);
+                    ReadMatchTime(listOfMatchesTeam, item.FullName, ref idTime);
+
+                foreach (Models.Match item in listOfMatchesTeam)
+                    listOfMatches.Add(item);
             }
 
-            return string.Empty;
+            return listOfMatches;
         }
 
-        private string ReadMatchDate(ObservableCollection<Models.Match> listOfMatches, string fileName, string team)
+        private string ReadMatchDate(List<Models.Match> listOfMatches, string fileName, string team)
         {
             try
             {
@@ -64,7 +73,7 @@ namespace RemindersForTopEleven
             return string.Empty;
         }
 
-        private string ReadMatchTime(ObservableCollection<Models.Match> listOfMatches, string fileName, ref int idTime)
+        private string ReadMatchTime(List<Models.Match> listOfMatches, string fileName, ref int idTime)
         {
 
             try
