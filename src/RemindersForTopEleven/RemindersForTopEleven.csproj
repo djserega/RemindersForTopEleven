@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="Events.cs" />
     <Compile Include="Reader.cs" />
+    <Compile Include="Reminders.cs" />
     <Compile Include="TelegramApi.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
