@@ -48,5 +48,9 @@ namespace RemindersForTopEleven.Models
         private void SetCurrentDay()
             => CurrentDay = DateTime.Now.Date == _dateTime.Date;
 
+        internal string GetMessageOnBeginingMatch()
+            => $"Скоро гра у команди {_team}. Початок о {_dateTime.ToString("dd.MM HH:mm")}";
+
     }
 }
+                                                           
