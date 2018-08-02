@@ -13,6 +13,8 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="5"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1" HorizontalAlignment="Center">
@@ -52,6 +54,18 @@
                 </DataGrid.RowStyle>
                 
             </DataGrid>
+        </Grid>
+
+        <Grid Grid.Row="5" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Border Margin="2">
+                    <Button Content=" Запустить таймер " Click="ButtonStartTimer_Click"/>
+                </Border>
+                <Separator Width="5" Background="{x:Null}"/>
+                <Border Margin="2">
+                    <Button Content=" Остановить таймер " Click="ButtonStopTimer_Click"/>
+                </Border>
+            </StackPanel>
         </Grid>
         
     </Grid>
