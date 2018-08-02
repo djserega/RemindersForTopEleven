@@ -46,7 +46,7 @@ namespace RemindersForTopEleven.Models
             => int.Parse(text);
 
         private void SetCurrentDay()
-            => _currentDay = DateTime.Now.Date == _dateTime.Date;
+            => CurrentDay = DateTime.Now.Date == _dateTime.Date;
 
     }
 }
