@@ -31,7 +31,7 @@
             <DataGrid x:Name="DataGridListMatches" ItemsSource="{Binding ElementName=WindowsMainPage, Path=DataContext.ListOfMatches}" AutoGenerateColumns="False">
                
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Дата/время" Binding="{Binding DateTime, StringFormat=\{0:dd.MM.yy HH:mm\}}" />
+                    <DataGridTextColumn Header="Дата/время" Binding="{Binding DateTime, StringFormat={}{0:dd.MM.yy HH:mm}}" />
                     <!--<DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
                     <DataGridTextColumn Header="Время" Binding="{Binding Time}"/>-->
                     <DataGridTextColumn Header="Команда" Binding="{Binding Team}"/>
