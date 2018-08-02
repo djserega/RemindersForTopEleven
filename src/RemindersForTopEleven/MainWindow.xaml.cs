@@ -48,16 +48,9 @@ namespace RemindersForTopEleven
         {
             List<Models.Match> list = new List<Models.Match>();
 
-            TimeSpan timeSpanMax = new TimeSpan(0, 15, 0);
-            TimeSpan timeSpanMin = new TimeSpan(0, 0, 0);
-
             foreach (Models.Match item in _listOfMatches)
-            {
-                TimeSpan currentTimeSpan = item.DateTime.Subtract(DateTime.Now);
-
-                if (timeSpanMax > currentTimeSpan && currentTimeSpan > timeSpanMin)
+                if (item.CountMinutesBeforeBeginningMatch > 0)
                     list.Add(item);
-            }
 
             return list;
         }
