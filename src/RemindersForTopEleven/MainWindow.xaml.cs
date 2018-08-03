@@ -34,10 +34,12 @@ namespace RemindersForTopEleven
             _startMatchEvents = new StartMatchEvents();
             _startMatchEvents.StartMatch += _startMatchEvents_StartMatch;
             _reminders = new Reminders(_startMatchEvents);
+
+            ChangeEnablesButtonTimer(false);
         }
 
         public ObservableCollection<Models.Match> ListOfMatches { get => _listOfMatches; }
-
+        
         private void _startMatchEvents_StartMatch()
         {
             foreach (Models.Match item in GetListOfBeginningMatches())
@@ -57,11 +59,17 @@ namespace RemindersForTopEleven
 
         private async void ButtonReadFile_Click(object sender, RoutedEventArgs e)
         {
+            ButtonReadFile.Background = Brushes.WhiteSmoke;
+            ButtonReadFile.IsEnabled = false;
+
             _listOfMatches.Clear();
 
             List<Models.Match> listOfMatches = await ReadDataAsync();
             foreach (Models.Match item in listOfMatches)
                 _listOfMatches.Add(item);
+
+            ButtonReadFile.Background = (Brush)new BrushConverter().ConvertFromString("#FFDDDDDD");
+            ButtonReadFile.IsEnabled = true;
         }
 
         private async Task<List<Models.Match>> ReadDataAsync()
@@ -79,12 +87,26 @@ namespace RemindersForTopEleven
         private void ButtonStartTimer_Click(object sender, RoutedEventArgs e)
         {
             if (_listOfMatches.Count() > 0)
+            {
                 _reminders.StartTimer();
+                ChangeEnablesButtonTimer(true);
+            }
         }
 
         private void ButtonStopTimer_Click(object sender, RoutedEventArgs e)
         {
             _reminders.StopTimer();
+            ChangeEnablesButtonTimer(false);
         }
+
+        private void ChangeEnablesButtonTimer(bool enabled)
+        {
+            ButtonStartTimer.Background = enabled ? Brushes.WhiteSmoke : (Brush)new BrushConverter().ConvertFromString("#FFDDDDDD");
+            ButtonStartTimer.IsEnabled = !enabled;
+
+            ButtonStopTimer.Background = enabled ? (Brush)new BrushConverter().ConvertFromString("#FFDDDDDD") : Brushes.WhiteSmoke;
+            ButtonStopTimer.IsEnabled = enabled;
+        }
+
     }
 }

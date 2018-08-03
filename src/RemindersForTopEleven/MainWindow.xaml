@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RemindersForTopEleven"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="300"
+        Title="MainWindow" Height="600" Width="400"
         x:Name="WindowsMainPage">
     <Grid>
         <Grid.RowDefinitions>
@@ -20,7 +20,7 @@
         <Grid Grid.Row="1" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <Border Margin="2">
-                    <Button Content=" Прочитать файлы " Click="ButtonReadFile_Click"/>
+                    <Button x:Name="ButtonReadFile" Content=" Прочитать файлы " Click="ButtonReadFile_Click"/>
                 </Border>
                 <Separator Width="5" Background="{x:Null}"/>
                 <Border Margin="2">
@@ -59,11 +59,15 @@
         <Grid Grid.Row="5" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <Border Margin="2">
-                    <Button Content=" Запустить таймер " Click="ButtonStartTimer_Click"/>
+                    <Button x:Name="ButtonStartTimer" Content=" Запустить таймер " Click="ButtonStartTimer_Click"/>
                 </Border>
                 <Separator Width="5" Background="{x:Null}"/>
+                <!--<Border Margin="2">
+                    <Label x:Name="LabelTimer" Content="{Binding ElementName=WindowsMainPage, Path=DataContext.LabelTimerContent}"/>
+                </Border>
+                <Separator Width="5" Background="{x:Null}"/>-->
                 <Border Margin="2">
-                    <Button Content=" Остановить таймер " Click="ButtonStopTimer_Click"/>
+                    <Button x:Name="ButtonStopTimer" Content=" Остановить таймер " Click="ButtonStopTimer_Click"/>
                 </Border>
             </StackPanel>
         </Grid>
